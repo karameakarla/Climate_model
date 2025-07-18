@@ -64,3 +64,10 @@ ________________________________________
 •	Posible expansión a subniveles geográficos (estados, provincias).
 •	Integración futura con APIs de datos abiertos (ej. Copernicus, NOAA, etc.).
 
+MAPA CONCEPTUAL -Entidad DER
+<img width="703" height="867" alt="image" src="https://github.com/user-attachments/assets/170ec63c-383c-49f6-899e-ce2fe82d80d2" />
+
+![Tarea 1](https://github.com/user-attachments/assets/a83cd42f-2860-4bc2-a7ed-2bcf4f4ef22d)
+
+
+
