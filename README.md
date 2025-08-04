@@ -3,6 +3,7 @@
 
 🎯 Contexto y Objetivo General
 MONDO (Organización ambiental sin fines de lucro) desea desarrollar un sistema para gestionar, monitorear y analizar indicadores relacionados con el cambio climático en los países de América del Sur. 
+
 **Objetivos del sistema**
 Recopilar datos confiables que permitan evaluar tendencias, 
 Generar alertas tempranas, 
