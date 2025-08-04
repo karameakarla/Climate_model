@@ -65,9 +65,10 @@ ________________________________________
 •	Integración futura con APIs de datos abiertos (ej. Copernicus, NOAA, etc.).
 
 MAPA CONCEPTUAL -Entidad DER
-https://docs.google.com/drawings/d/17tFKu52Km6AOCx5TsTB3ZJRwBAnv6cQu89bSKjGIGA0/edit
+![Diseno Log climate_model](https://github.com/user-attachments/assets/1104a89b-b334-4a00-b9c5-4dc8719f6b45)
 
 ![Tarea 1](https://github.com/user-attachments/assets/a83cd42f-2860-4bc2-a7ed-2bcf4f4ef22d)
+
 
 
 
