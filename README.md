@@ -1,9 +1,13 @@
 # Climate_model
-Modelamiento de indicadores de cambio climatico
-
 🗂️ Caso Propuesto: Sistema de Gestión de Indicadores del Cambio Climático en América del Sur
+
 🎯 Contexto y Objetivo General
-Una organización ambiental sin fines de lucro desea desarrollar un sistema para gestionar, monitorear y analizar indicadores relacionados con el cambio climático en los países de América del Sur. El objetivo es recopilar datos confiables que permitan evaluar tendencias, generar alertas tempranas, diseñar políticas públicas y fomentar la cooperación internacional.
+MONDO (Organización ambiental sin fines de lucro) desea desarrollar un sistema para gestionar, monitorear y analizar indicadores relacionados con el cambio climático en los países de América del Sur. 
+**Objetivos del sistema**
+Recopilar datos confiables que permitan evaluar tendencias, 
+Generar alertas tempranas, 
+Diseñar políticas públicas y 
+Fomentar la cooperación internacional.
 ________________________________________
 🌎 Escenario
 Cada país de América del Sur tiene agencias ambientales que registran datos periódicos relacionados con diversos indicadores climáticos y ambientales, tales como:
