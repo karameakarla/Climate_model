@@ -12,6 +12,7 @@ Fomentar la cooperación internacional.
 ________________________________________
 🌎 Escenario
 Cada país de América del Sur tiene agencias ambientales que registran datos periódicos relacionados con diversos indicadores climáticos y ambientales, tales como:
+
 •	Temperatura promedio
 •	Nivel de precipitaciones
 •	Deforestación anual
@@ -19,6 +20,7 @@ Cada país de América del Sur tiene agencias ambientales que registran datos pe
 •	Incendios forestales
 •	Nivel del mar
 •	Eventos extremos (sequías, inundaciones, olas de calor)
+
 Estos datos deben almacenarse y estar vinculados a la ubicación geográfica, el tiempo, la fuente de información, y el tipo de indicador. Además, deben poder compararse entre países, regiones y años.
 ________________________________________
 🧱 Elementos clave del modelo de base de datos
@@ -70,7 +72,8 @@ ________________________________________
 •	Integración futura con APIs de datos abiertos (ej. Copernicus, NOAA, etc.).
 
 MAPA CONCEPTUAL -Entidad DER
-![Dis_Conceptual Climate_model](https://github.com/user-attachments/assets/2ebf3fe9-cf25-476d-914b-140c248e5b61)
+![Dis_Conceptual Climate_model](https://github.com/user-attachments/assets/ac8b319f-8739-4d79-b4a0-fa0c67e8a657)
+
 
 
 
