@@ -74,6 +74,8 @@ ________________________________________
 MAPA CONCEPTUAL -Entidad DER
 ![Dis_Conceptual Climate_model](https://github.com/user-attachments/assets/ac8b319f-8739-4d79-b4a0-fa0c67e8a657)
 
+DISENO LOGICO
+<img width="1119" height="751" alt="image" src="https://github.com/user-attachments/assets/24979355-06ec-47b0-8433-2ea33c614463" />
 
 
 
