@@ -22,7 +22,7 @@ impacto_estimado NVARCHAR(255) NULL
 CREATE TABLE pais (
 id INT IDENTITY(1,1) PRIMARY KEY,
 codigo_olc VARCHAR(20) UNIQUE,
-pais_nombre VARCHAR(100) UNIQUE,
+pais_nombre VARCHAR(100),
 superficie INT NOT NULL,
 poblacion VARCHAR,
 region VARCHAR,
@@ -41,15 +41,24 @@ web VARCHAR,
 
 --Registro Indicador
 
-CREATE TABLE registro_indicador (
+CREATE TABLE registro_indicador(
 id INT IDENTITY(1,1) PRIMARY KEY,
-pais_id INT UNIQUE,
-indicador_id INT UNIQUE,
+pais_id INT FOREIGN KEY REFERENCES pais_id_evento_extremo(id),
+indicador_id INT FOREIGN KEY REFERENCES indicador(id),
 fuente_id INT,
-fecha DATETIME NOT NULL,
+tipo_evento_id INT,
+fecha_reporte DATE,
 valor VARCHAR(255),
+created_at DATETIME DEFAULT GETDATE(),
+updated_at DATETIME,
+deleted_at DATETIME,
+create_by INT,
+update_by INT,
+deleted_by INT,
 observaciones VARCHAR,
 );
+
+
 
 --Desviaciones Indicadores
 
@@ -62,9 +71,9 @@ clasificacion_alertas VARCHAR,
 );
 
 --Indicador
-CREATE TABLE Indicador (
+CREATE TABLE indicador (
 id INT IDENTITY(1,1) PRIMARY KEY,
-pais_id INT UNIQUE,
+pais_id INT FOREIGN KEY REFERENCES registro_indicador(id),
 fuente_datos_id INT FOREIGN KEY REFERENCES fuente_datos(id),
 id_nombre VARCHAR (200),
 unid_medida INT,
