@@ -19,7 +19,7 @@ impacto_estimado NVARCHAR(255) NULL
 
 --Pais
 
-CREATE TABLE pais (
+CREATE TABLE pais(
 id INT IDENTITY(1,1) PRIMARY KEY,
 codigo_olc VARCHAR(20) UNIQUE,
 pais_nombre VARCHAR(100),
@@ -59,7 +59,6 @@ observaciones VARCHAR,
 );
 
 
-
 --Desviaciones Indicadores
 
 CREATE TABLE desviaciones_indicadores (
@@ -80,3 +79,13 @@ unid_medida INT,
 categoria VARCHAR UNIQUE,
 evento_extremo_id INT FOREIGN KEY REFERENCES evento_extremo(id),
 );
+
+
+ALTER TABLE [Indicador] ADD CONSTRAINT [Indicador_fk1] FOREIGN KEY ([pais_id]) REFERENCES [pais]([id]);
+ALTER TABLE [Indicador] ADD CONSTRAINT [Indicador_fk2] FOREIGN KEY ([fuente_datos_id]) REFERENCES [fuente_datos]([id]);
+ALTER TABLE [Indicador] ADD CONSTRAINT [Indicador_fk6] FOREIGN KEY ([evento_extremo_id]) REFERENCES [evento_extremo]([id]);
+ALTER TABLE [pais] ADD CONSTRAINT [pais_fk5] FOREIGN KEY ([region]) REFERENCES [Indicador]([id]);
+ALTER TABLE [fuente_datos] ADD CONSTRAINT [fuente_datos_fk1] FOREIGN KEY ([id_nombre]) REFERENCES [Indicador]([fuente_datos_id]);
+ALTER TABLE [registro_indicador] ADD CONSTRAINT [registro_indicador_fk2] FOREIGN KEY ([indicador_id]) REFERENCES [Indicador]([id]);
+ALTER TABLE [desviaciones_indicadores] ADD CONSTRAINT [desviaciones_indicadores_fk1] FOREIGN KEY ([registro_diario_indicador_id]) REFERENCES [registro_indicador]([indicador_id]);
+
