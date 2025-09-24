@@ -99,10 +99,24 @@ PRINT '============================';
 PRINT ' 2. AJUSTE DE ESTRUCTURA Y FK ';
 PRINT '============================';
 
--- 3️⃣ Eliminar restricciones únicas conflictivas
-ALTER TABLE pais DROP CONSTRAINT UQ__pais__1F360549357AC7E3;
-ALTER TABLE registro_indicador DROP CONSTRAINT UQ__registro__77769B24105036D1;
-ALTER TABLE indicador DROP CONSTRAINT UQ__Indicado__1179412F9E5D006A;
+-- Verificar y eliminar si existen restricciones únicas conflictivas
+IF EXISTS (SELECT 1 FROM sys.objects
+           WHERE type = 'UQ'AND name = 'UQ__pais__1F360549357AC7E3')
+BEGIN
+    ALTER TABLE pais DROP CONSTRAINT UQ__pais__1F360549357AC7E3;
+END
+
+IF EXISTS (SELECT 1 FROM sys.objects
+           WHERE type = 'UQ' AND name = 'UQ__registro__77769B24105036D1')
+BEGIN
+    ALTER TABLE registro_indicador DROP CONSTRAINT UQ__registro__77769B24105036D1;
+END
+
+IF EXISTS (SELECT 1 FROM sys. objects
+           WHERE type = 'UQ' AND name = 'UQ__Indicado__1179412F9E5D006A')
+BEGIN
+    ALTER TABLE indicador DROP CONSTRAINT UQ__Indicado__1179412F9E5D006A;
+END
 
 -- 4️⃣ Modificar tipos de datos
 ALTER TABLE pais ALTER COLUMN poblacion BIGINT NULL;
@@ -115,34 +129,98 @@ ALTER TABLE desviaciones_indicadores ALTER COLUMN diferencia_absoluta DECIMAL(18
 ALTER TABLE desviaciones_indicadores ALTER COLUMN diferencia_porcentual DECIMAL(18,2) NULL;
 ALTER TABLE desviaciones_indicadores ALTER COLUMN clasificacion_alertas VARCHAR(50) NULL;
 
--- 5️⃣ Eliminar FKs viejas
-ALTER TABLE evento_extremo DROP CONSTRAINT FK_pais_id;
-ALTER TABLE registro_indicador DROP CONSTRAINT FK_registro__pais__5F9E293D;
-ALTER TABLE indicador DROP CONSTRAINT Indicador_fk1;
+-- 5️⃣ Verificar y Eliminar FKs viejas
 
--- 6️⃣ Crear FKs nuevas
-ALTER TABLE evento_extremo 
-    ADD CONSTRAINT FK_evento_pais FOREIGN KEY (pais_id) REFERENCES pais(id);
+IF EXISTS (SELECT 1 FROM sys.foreign_keys
+           WHERE name = 'FK_pais_id')
+BEGIN
+    ALTER TABLE evento_extremo DROP CONSTRAINT FK_pais_id;
+END
 
-ALTER TABLE registro_indicador 
-    ADD CONSTRAINT FK_registro_pais FOREIGN KEY (pais_id) REFERENCES pais(id);
+IF EXISTS (SELECT 1 FROM sys.foreign_keys
+           WHERE name = 'FK_registro__pais__5F9E293D')
+BEGIN
+    ALTER TABLE registro_indicador DROP CONSTRAINT FK_registro__pais__5F9E293D;
+END
 
-ALTER TABLE registro_indicador 
-    ADD CONSTRAINT FK_registro_indicador FOREIGN KEY (indicador_id) REFERENCES indicador(id);
+IF EXISTS (SELECT 1 FROM sys.foreign_keys
+          WHERE name = 'Indicador_fk1')
+BEGIN
+    ALTER TABLE indicador DROP CONSTRAINT Indicador_fk1;
+END
 
-ALTER TABLE registro_indicador 
-    ADD CONSTRAINT FK_registro_fuente FOREIGN KEY (fuente_id) REFERENCES fuente_datos(id);
 
-ALTER TABLE indicador 
-    ADD CONSTRAINT FK_indicador_pais FOREIGN KEY (pais_id) REFERENCES pais(id);
+-- Borrar si existe FK_evento_pais 
+IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'FK_evento_pais')
+BEGIN
+    ALTER TABLE evento_extremo DROP CONSTRAINT FK_evento_pais;
+END;
 
-ALTER TABLE indicador 
-    ADD CONSTRAINT FK_indicador_fuente FOREIGN KEY (fuente_datos_id) REFERENCES fuente_datos(id);
+-- Borrar si existe FK_registro_pais 
+IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'FK_registro_pais')
+BEGIN
+    ALTER TABLE registro_indicador DROP CONSTRAINT FK_registro_pais;
+END;
 
-ALTER TABLE indicador 
-    ADD CONSTRAINT FK_indicador_evento FOREIGN KEY (evento_extremo_id) REFERENCES evento_extremo(id);
+-- Borrar si existe FK_registro_indicador
+IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'FK_registro_indicador')
+BEGIN
+    ALTER TABLE registro_indicador DROP CONSTRAINT FK_registro_indicador;
+END;
 
-ALTER TABLE desviaciones_indicadores 
-    ADD CONSTRAINT FK_desviacion_registro FOREIGN KEY (registro_diario_indicador_id) REFERENCES registro_indicador(id);
+-- Borrar si existe FK_registro_indicador
+IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'FK_registro_indicador')
+BEGIN
+    ALTER TABLE registro_indicador DROP CONSTRAINT FK_registro_fuente;
+END;
+
+-- Borrar si existe FK_indicador
+IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'FK_indicador')
+BEGIN
+    ALTER TABLE indicador DROP CONSTRAINT FK_indicador_pais;
+END;
+
+-- Borrar si existe FK_indicador
+IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'FK_indicador')
+BEGIN
+    ALTER TABLE indicador DROP CONSTRAINT FK_indicador_fuente;
+END;
+
+-- Borrar si existe FK_indicador
+IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'FK_indicador')
+BEGIN
+    ALTER TABLE indicador DROP CONSTRAINT FK_indicador_evento;
+END;
+
+-- Borrar si existe FK_desviaciones_indicadores
+IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'FK_desviaciones_indicadores')
+BEGIN
+    ALTER TABLE desviaciones_indicadores DROP CONSTRAINT FK_desviacion_registro;
+END;
+
+--Crear fuente_datos si aun no existe
+
+IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = 'fuente_datos')
+BEGIN
+   CREATE TABLE fuente_datos(
+    id INT PRIMARY KEY,
+    nombre NVARCHAR(100) NOT NULL,
+    descripcion NVARCHAR(255),
+    tipo_fuente NVARCHAR(255)
+);
+END
+
+--Crear la FK (Solo sino existe ya)
+IF NOT EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'FK_registro_fuente')
+BEGIN
+   ALTER TABLE registro_indicador
+      ADD CONSTRAINT FK_registro_fuente
+      FOREIGN KEY (fuente_id) REFERENCES fuente_datos(id);
+END
 
 PRINT '✅ Migración completada.';
+
+--EXEC sp_help 'registro_indicador';
+
+--Crear fuente_datos si aun no existe
+
