@@ -1,88 +1,98 @@
+
 # ==========================================
-#  Gitignore para Proyecto Climate_model
-#  Protege archivos sensibles y datos locales
+#  Gitignore para proyecto Climate_model
+#  Protege archivos sensibles y permite SOLO dml-querys
 # ==========================================
 
-# --- 1. Archivos SQL que NO deben subirse ---
-# Backups de SQL Server
+#############
+#   SQL     #
+#############
+
+# Ignorar TODO dentro de SQL
+SQL/*
+
+# PERMITIR SOLO la carpeta dml-querys y todo su contenido
+!SQL/dml-querys/
+!SQL/dml-querys/**
+
+# Bloquear scripts de respaldo, pruebas y restauración
 *.bak
 *.trn
 *.mdf
 *.ldf
-
-# Scripts de restauración o pruebas
 *Restore*.sql
 SQLRestore.sql
-
-# Archivos temporales o borradores SQL
 *temp*.sql
 *prueba*.sql
 *backup*.sql
 *restaurar*.sql
 
-# Excluir carpetas antiguas de DML o Scripts
+# Bloquear carpetas de scripts antiguos
 dml/
 scripts/
 scripts-base proy/
 procedimientos/
 dd_l/
 
-# --- 2. Archivos de datos sensibles ---
-# Archivos Python con credenciales
+#############
+#  Sensible #
+#############
+
+# Archivos Python con credenciales (bloquear todo)
 *.py
-# PERMITIR solo el código Python público
+# PERMITIR solo el script público
 !actualizador_publico.py
 
-# CSV, TXT, JSON sensibles (seeds)
+# Bloquear datos sensibles
 *.csv
 *.txt
 *.json
 
-# PERMITIR solo la carpeta dml-querys que tú subes
-!SQL/
-!SQL/dml-querys/
-!SQL/dml-querys/**
+#############
+#  Backups  #
+#############
 
-# --- 3. Backups internos del proyecto ---
 Backups/
 backups/
 database-backups/
 
-# --- 4. Archivos de logs ---
+#############
+#   Logs    #
+#############
+
 *.log
 *.out
 
-# --- 5. Visual Studio / VS Code ---
+#############
+#  Editor   #
+#############
+
 .vscode/
 .vs/
 *.user
 *.suo
 
-# --- 6. Python ---
+#############
+#  Python   #
+#############
+
 __pycache__/
 *.pyc
 *.pyo
 
-# --- 7. Windows ---
+#############
+#  Windows  #
+#############
+
 Thumbs.db
 Desktop.ini
 
-# --- 8. Carpetas de prueba ---
+#############
+#  Tests    #
+#############
+
 test/
 tests/
 pruebas/
 temp/
 tmp/
-
-
-#Backups/
-#*.bak
-#*.log
-#*.mdf
-#*.ldf
-#__pycache__/
-#*.pyc
-#*.env
-#*.config
-#*.json
-#*.zip
