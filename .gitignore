@@ -1,0 +1,88 @@
+# ==========================================
+#  Gitignore para Proyecto Climate_model
+#  Protege archivos sensibles y datos locales
+# ==========================================
+
+# --- 1. Archivos SQL que NO deben subirse ---
+# Backups de SQL Server
+*.bak
+*.trn
+*.mdf
+*.ldf
+
+# Scripts de restauración o pruebas
+*Restore*.sql
+SQLRestore.sql
+
+# Archivos temporales o borradores SQL
+*temp*.sql
+*prueba*.sql
+*backup*.sql
+*restaurar*.sql
+
+# Excluir carpetas antiguas de DML o Scripts
+dml/
+scripts/
+scripts-base proy/
+procedimientos/
+dd_l/
+
+# --- 2. Archivos de datos sensibles ---
+# Archivos Python con credenciales
+*.py
+# PERMITIR solo el código Python público
+!actualizador_publico.py
+
+# CSV, TXT, JSON sensibles (seeds)
+*.csv
+*.txt
+*.json
+
+# PERMITIR solo la carpeta dml-querys que tú subes
+!SQL/
+!SQL/dml-querys/
+!SQL/dml-querys/**
+
+# --- 3. Backups internos del proyecto ---
+Backups/
+backups/
+database-backups/
+
+# --- 4. Archivos de logs ---
+*.log
+*.out
+
+# --- 5. Visual Studio / VS Code ---
+.vscode/
+.vs/
+*.user
+*.suo
+
+# --- 6. Python ---
+__pycache__/
+*.pyc
+*.pyo
+
+# --- 7. Windows ---
+Thumbs.db
+Desktop.ini
+
+# --- 8. Carpetas de prueba ---
+test/
+tests/
+pruebas/
+temp/
+tmp/
+
+
+#Backups/
+#*.bak
+#*.log
+#*.mdf
+#*.ldf
+#__pycache__/
+#*.pyc
+#*.env
+#*.config
+#*.json
+#*.zip
