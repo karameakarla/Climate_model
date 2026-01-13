@@ -77,7 +77,8 @@ MAPA CONCEPTUAL -Entidad DER
 DISENO LOGICO
 <img width="1119" height="751" alt="image" src="https://github.com/user-attachments/assets/24979355-06ec-47b0-8433-2ea33c614463" />
 
-<img width="1312" height="821" alt="image" src="https://github.com/user-attachments/assets/68eca3e2-1d6e-4c3d-90fa-8a065ea426d0" />
+<img width="920" height="739" alt="image" src="https://github.com/user-attachments/assets/0e14d728-cd14-4da4-9934-f051948e49c6" />
+
 
 MODELO DIMENSIONAL
 <img width="950" height="843" alt="image" src="https://github.com/user-attachments/assets/5f63dbe0-83cd-4e6e-94fd-8ad528a99f0f" />
