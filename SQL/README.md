@@ -1,4 +1,4 @@
-Climate Model — Data Pipeline & SQL Architecture
+__Climate Model — Data Pipeline & SQL Architecture__
 1. Contexto del proyecto
 
 Este repositorio documenta el desarrollo progresivo de un modelo de datos orientado al análisis climático, construido como parte de un proceso formativo académico y de experimentación práctica con datos reales.
@@ -28,8 +28,6 @@ desviaciones y métricas analíticas
 Este modelo sirve como capa de persistencia para procesos ETL y herramientas de análisis.
 
 4. Pipeline de datos (ETL)
-El flujo de datos del proyecto sigue la lógica ETL utilizada en entornos profesionales.
-
 Extract
 Fuentes utilizadas:
 datasets climáticos abiertos
@@ -65,7 +63,6 @@ Power BI / Cubos (fase analítica en desarrollo)
    <img width="393" height="534" alt="image" src="https://github.com/user-attachments/assets/29316a0b-be82-4b50-b225-df9cd0cd330b" />
 
 7. Estado del proyecto
-
 Actualmente el proyecto cubre:
 diseño del modelo relacional
 scripts de creación de base
@@ -81,12 +78,9 @@ escalabilidad del modelo
 
 8. Enfoque académico y profesional
 Este repositorio refleja la evolución del aprendizaje aplicado:
-transición desde scripts básicos hacia arquitectura de datos
-uso de datos reales en lugar de simulados
-integración de ETL y BI
-documentación del proceso técnico
+transición desde scripts básicos hacia arquitectura de datos, uso de datos reales, integración de ETL y BI
 
-El objetivo no es solo cumplir una entrega académica, sino construir una base reutilizable y escalable para proyectos de analítica climática y modelos de negocio basados en datos.
+El objetivo es construir una base reutilizable y escalable para proyectos de analítica climática y modelos de negocio basados en datos.
 
 9. Cómo ejecutar el proyecto
 Crear la base de datos mediante los scripts en:
@@ -103,11 +97,19 @@ bi/
 
 10. Notas finales
 El proyecto continúa en desarrollo como laboratorio de aprendizaje en:
-ingeniería de datos
-modelado relacional
-ETL
-analítica climática
+ingeniería de datos, modelado relacional, ETL, analítica climática.
 Se prioriza evolución continua y mejora incremental del pipeline.
 <img width="350" height="692" alt="image" src="https://github.com/user-attachments/assets/1af7749a-90e6-475d-87d3-2efadd90e355" />
+
+**DATAFLOW INTEGRATION SERVICE**
+<img width="975" height="722" alt="image" src="https://github.com/user-attachments/assets/562ff321-eccf-4dae-b458-fe13294c44bb" />
+<img width="975" height="571" alt="image" src="https://github.com/user-attachments/assets/f729007c-a30d-47de-b8d6-7084db44aa95" />
+
+**cubo OLAP**
+<img width="975" height="694" alt="image" src="https://github.com/user-attachments/assets/2301bbaa-fae9-49b6-aac9-bcc77f41ae0e" />
+
+
+
+
 
 
